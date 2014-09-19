@@ -18,6 +18,17 @@ class project_finances(osv.Model):
                     return True
             return False
 
+    def _count_amount(self, cr, uid, ids, field_name, arg, context):
+        res = {}
+        record = self.browse(cr, uid, ids, context=context)
+        for data in record:
+            amount = 0
+            #res_str = dict(self.pool.get('project_logical_framework.logical_framework').fields_get(cr, uid, allfields=['type'], context=context)['type']['selection'])[data.type]
+            #res_str += "\n" + data.logique
+            res[data.id] = amount
+        
+        return res
+
     def _verify_fields(self, cr, uid, ids, field_name, args, context=None):
         record = self.browse(cr, uid, ids, context=context)
         for data in record:
@@ -26,6 +37,10 @@ class project_finances(osv.Model):
     _columns = {
         'amount_expected': fields.float(
             'Amount expected',
+            digits_compute=dp.get_precision('Amount')),
+        'test_amount': fields.function(_count_amount,
+            string="[TEST] Amount expected",
+            type="float",
             digits_compute=dp.get_precision('Amount')),
         'amount_overload': fields.function(_verify_fields, type="boolean"),
      }
@@ -51,6 +66,6 @@ class project_finances_project(osv.Model):
         return {'value': {'amount_overload': False}}
 
     _columns = {
-        'thematic': fields.char('Thematic Project'),
+        'thematic': fields.char('Project Thematic'),
         'area': fields.char('Intervention area'),
     }
