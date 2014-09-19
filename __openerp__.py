@@ -1,5 +1,6 @@
 {
     'name': "Project Finances",
+    'author' : 'Stéphane Codazzi @ TeMPO-Consulting',
     'category': 'Project',
     'description': """
 Project Finances

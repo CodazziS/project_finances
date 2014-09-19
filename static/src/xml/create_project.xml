@@ -15,6 +15,8 @@
                     <newline/>
                     <field name="amount_expected" on_change="_onchange_amount_expected(parent_id, amount_expected)" />
                     <newline/>
+                    <field name="test_amount" />
+                    <newline/>
                     <field name="area" />
                     <newline/>
                     <field name="thematic" />
