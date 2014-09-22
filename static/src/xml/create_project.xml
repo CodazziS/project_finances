@@ -10,12 +10,9 @@
             <data>
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <newline/>
-                    <label style="font-weight:bold; color: red" attrs="{'invisible': [('amount_overload','=',False)]}" string="Montant alloué dépassé" />
-                    <field name="amount_overload" invisible="True"/>
+                    <field name="planned_amount" />
                     <newline/>
-                    <field name="amount_expected" on_change="_onchange_amount_expected(parent_id, amount_expected)" />
-                    <newline/>
-                    <field name="test_amount" />
+                    <field name="practical_amount" />
                     <newline/>
                     <field name="area" />
                     <newline/>

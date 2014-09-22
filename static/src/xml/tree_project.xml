@@ -19,7 +19,8 @@
                     <field name="user_id" string="Project Manager"/>
                     <field name="state"/>
                     
-                    <field name="amount_expected" type="price" string="Amount Expected"/>
+                    <field name="planned_amount" type="price" />
+                    <field name="practical_amount" type="price" />
                 </tree>
             </xpath>
         </field>
