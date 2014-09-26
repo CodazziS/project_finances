@@ -30,31 +30,18 @@ class project_finances(osv.Model):
 
     _columns = {
         'planned_amount': fields.function(_count_planned_amount,
-            string="Planned amount",
-            type="float",
-            digits_compute=dp.get_precision('Amount')),
+        string="Planned amount",
+        type="float",
+        digits_compute=dp.get_precision('Amount')),
         'practical_amount': fields.function(_count_practical_amount,
-            string="Practical amount",
-            type="float",
-            digits_compute=dp.get_precision('Amount')),
-     }
+        string="Practical amount",
+        type="float",
+        digits_compute=dp.get_precision('Amount')),
+    }
+
 
 class project_finances_project(osv.Model):
     _inherit = 'project.project'
-
-    def _onchange_amount_expected(
-        self,
-        cr,
-        uid,
-        ids,
-        parent=None,
-        amount_expected=0):
-        if parent:
-            aaa_obj = self.pool.get("account.analytic.account")
-            parent_brw = aaa_obj.browse(cr, uid, parent)
-            return {'value': {'amount_overload': aaa_obj
-                ._check_amount(amount_expected, parent_brw)}}
-        return {'value': {'amount_overload': False}}
 
     _columns = {
         'thematic': fields.char('Project Thematic'),
