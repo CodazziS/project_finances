@@ -14,7 +14,7 @@
                     <newline/>
                     <field name="practical_amount" />
                     <newline/>
-                    <field name="area" />
+                    <field name="area_id" />
                     <newline/>
                     <field name="thematic" />
                 </xpath>

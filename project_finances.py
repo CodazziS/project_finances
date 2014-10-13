@@ -40,10 +40,21 @@ class project_finances(osv.Model):
     }
 
 
+class project_finances_zones_area(osv.Model):
+    _name = 'project_finances.zones_area'
+
+    _columns = {
+        'name': fields.char('Zone area name')
+    }
+
+
 class project_finances_project(osv.Model):
     _inherit = 'project.project'
 
     _columns = {
         'thematic': fields.char('Project Thematic'),
-        'area': fields.char('Intervention area'),
+        'area_id': fields.many2one(
+            'project_finances.zones_area',
+            'Intervention area'
+        ),
     }
